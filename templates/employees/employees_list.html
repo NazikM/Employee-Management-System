@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Employee List</h2>
+
+  <!-- Sorting Form -->
+{#  <form method="get" action="{% url 'employee_list' %}">#}
+{##}
+{#    <button class="btn btn-success" type="submit">Sort</button>#}
+{#  </form>#}
+
+  <!-- Search Form -->
+  <form method="get" action="{% url 'employee_list' %}">
+      <div class="row">
+          <div class="col-6">
+            <label for="sort_field" class="form-label">Sort by:</label>
+            <select class="form-select" name="sort_field" id="sort_field">
+              <option value="full_name">Full Name</option>
+              <option value="position">Position</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+          <div class="col-6">
+              <label for="sort_field" class="form-label">Search by:</label>
+              <input type="text" class="form-control" name="search_query" id="search_query" placeholder="Search:">
+          </div>
+          <div class="row-6 my-4">
+              <button type="submit" class="w-100 btn btn-primary btn-lg">Process</button>
+          </div>
+
+      </div>
+
+      <br>
+
+  </form>
+
+  <!-- Employee List -->
+  <table>
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Position</th>
+        <th>Email</th>
+        <th>Hire Date</th>
+        <th>Supervisor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+        <tr>
+          <td>{{ employee.full_name }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.hire_date }}</td>
+          <td>{{ employee.supervisor }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

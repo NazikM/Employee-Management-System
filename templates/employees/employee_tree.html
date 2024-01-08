@@ -1,0 +1,8 @@
+<ul>
+    {% for employee in employees %}
+        <li class="branch" emp_id="{{ employee.id }}">
+            <i class="indicator glyphicon glyphicon-plus-sign"></i>
+            {{ employee.full_name }} ({{ employee.position }}) - {{ employee.email }}
+        </li>
+    {% endfor %}
+</ul>
