@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
   <h2>Employee List</h2>
-  <form method="get" action="{% url 'employee_list' %}">
+  <form method="get" id="filter-form" action="{% url 'employee_list' %}">
       <div class="row">
           <div class="col-6">
             <label for="sort_field" class="form-label">Sort by:</label>
@@ -23,7 +24,7 @@
       </div>
   </form>
 
-  <table>
+  <table id="employee-table">
     <thead>
       <tr>
         <th>Full Name</th>
@@ -34,15 +35,8 @@
       </tr>
     </thead>
     <tbody>
-      {% for employee in employees %}
-        <tr>
-          <td>{{ employee.full_name }}</td>
-          <td>{{ employee.position }}</td>
-          <td>{{ employee.email }}</td>
-          <td>{{ employee.hire_date }}</td>
-          <td>{{ employee.supervisor }}</td>
-        </tr>
-      {% endfor %}
+      {% include 'employees/employee_list_ajax.html' %}
     </tbody>
   </table>
+  <script src="{% static 'js/emp_list_filtering.js' %}"></script>
 {% endblock %}

@@ -1,5 +1,12 @@
+from django.http import JsonResponse
 from django.shortcuts import render
+from django.template.loader import render_to_string
+
 from .models import Employee
+
+
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 
 def employee_hierarchy(request):
@@ -26,5 +33,11 @@ def employee_list(request):
                                      position__icontains=search_query,
                                      email__icontains=search_query)
 
+        # Check if it's an Ajax request
+    if is_ajax(request=request):
+        html_context = {
+            'html': render_to_string('employees/employee_list_ajax.html', {'employees': employees}, request)
+        }
+        return JsonResponse(html_context)
     context = {'employees': employees}
     return render(request, 'employees/employees_list.html', context)
