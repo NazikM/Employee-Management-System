@@ -2,14 +2,6 @@
 
 {% block content %}
   <h2>Employee List</h2>
-
-  <!-- Sorting Form -->
-{#  <form method="get" action="{% url 'employee_list' %}">#}
-{##}
-{#    <button class="btn btn-success" type="submit">Sort</button>#}
-{#  </form>#}
-
-  <!-- Search Form -->
   <form method="get" action="{% url 'employee_list' %}">
       <div class="row">
           <div class="col-6">
@@ -18,6 +10,7 @@
               <option value="full_name">Full Name</option>
               <option value="position">Position</option>
               <option value="email">Email</option>
+              <option value="hire_date">Hire date</option>
             </select>
           </div>
           <div class="col-6">
@@ -27,14 +20,9 @@
           <div class="row-6 my-4">
               <button type="submit" class="w-100 btn btn-primary btn-lg">Process</button>
           </div>
-
       </div>
-
-      <br>
-
   </form>
 
-  <!-- Employee List -->
   <table>
     <thead>
       <tr>
