@@ -27,10 +27,13 @@ jobs:
           pip install black
 
       - name: Run Black and commit changes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           black .
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          
           git add .
           git commit -m "Format code with Black"
           git push
