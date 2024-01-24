@@ -1,5 +1,8 @@
 # Employee Management System
 
+[![Python Format](https://github.com/NazikM/Employee-Management-System/actions/workflows/formater.yml/badge.svg)](https://github.com/NazikM/Employee-Management-System/actions/workflows/formater.yml)
+[![Python Lint](https://github.com/NazikM/Employee-Management-System/actions/workflows/linter.yml/badge.svg)](https://github.com/NazikM/Employee-Management-System/actions/workflows/linter.yml)
+
 Employee Management System is a web application built with Django and Bootstrap for managing employee hierarchies, displaying employee information, and providing sorting and searching functionalities.
 
 ## Table of Contents
